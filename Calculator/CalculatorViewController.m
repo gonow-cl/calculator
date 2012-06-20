@@ -1,38 +1,44 @@
 //
 //  CalculatorViewController.m
-//  Calculator
+//  CalculatorRazeto
 //
-//  Created by Gonow on 6/19/12.
+//  Created by Gonow on 6/4/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import "CalculatorViewController.h"
+#import "CalculatorBrain.h"
 
 @interface CalculatorViewController ()
+
+@property (strong, nonatomic) CalculatorBrain *brain; 
 
 @end
 
 @implementation CalculatorViewController
 
-- (void)viewDidLoad
+@synthesize display = _display;
+@synthesize brain = _brain;
+
+
+- (IBAction)buttonPressed:(UIButton *)sender 
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    //NSString *digit = sender.currentTitle;
+    
+    //NSLog(@"button pressed = %@", digit);
+    
+    self.display.text = [self.brain digitPressed:sender.currentTitle];
+    //[self.display.text stringByAppendingFormat:sender.currentTitle];
+    
 }
 
-- (void)viewDidUnload
+- (CalculatorBrain *) brain
 {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else {
-        return YES;
+    if (!_brain) {
+        _brain = [[CalculatorBrain alloc] init];
     }
+    
+    return _brain;
 }
 
 @end
