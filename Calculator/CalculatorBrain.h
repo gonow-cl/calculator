@@ -11,5 +11,7 @@
 @interface CalculatorBrain : NSObject
 - (NSString *) digitPressed:(NSString *) digit;
 - (NSString *) clear;
+- (void) push;
+- (float) sum;
 
 @end

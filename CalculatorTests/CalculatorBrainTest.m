@@ -32,10 +32,20 @@
 
 -(void)testSum {
     [self inputNumber:@"2"];
+    [self inputNumber:@"5"];
+    STAssertEquals([self.brain sum], 7.0f, @"Espera 7");
+}
+
+-(void)testSubtract {
+    STFail(@"To do: implementar");
+    // [self inputNumber:@"2"];
+    // [self inputNumber:@"5"];
+    // STAssertEquals([self.brain sub], 7.0f, @"Espera 7");
 }
 
 -(void)inputNumber:(NSString*)number {
-//    [self.brain digitPressed:number withDisplay:
+    [self.brain digitPressed:number];
+    [self.brain push];
     
 }
 
