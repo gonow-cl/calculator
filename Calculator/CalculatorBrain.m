@@ -65,6 +65,24 @@
     return result;
 }
 
+- (float) sub {
+    float result = - ( [self pop] - [self pop] );
+    [self.stack addObject: [NSString stringWithFormat:@"%f", result]];
+    return result;
+}
+
+- (float) div {
+    float dividendo = [self pop];
+    float result = [self pop] / dividendo;
+    [self.stack addObject: [NSString stringWithFormat:@"%f", result]];
+    return result;
+}
+- (float) mult{
+    float result = [self pop] * [self pop];
+    [self.stack addObject: [NSString stringWithFormat:@"%f", result]];
+    return result;
+}
+
 @end
 
 

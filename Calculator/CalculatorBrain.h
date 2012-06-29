@@ -13,5 +13,7 @@
 - (NSString *) clear;
 - (void) push;
 - (float) sum;
-
+- (float) sub;
+- (float) div;
+- (float) mult;
 @end
