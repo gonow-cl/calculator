@@ -74,6 +74,28 @@
     STAssertEquals([self.brain mult], 6.0f, @"Espera 6");
 }
 
+-(void)testMultiOPerations {
+    float expected = (10 / 5) + ((40 * 2) - 12);
+    
+    [self.brain digitPressed:@"1"];
+    [self.brain digitPressed:@"0"];
+    [self.brain push];
+    [self.brain digitPressed:@"5"];
+    [self.brain div];
+    [self.brain digitPressed:@"4"];
+    [self.brain digitPressed:@"0"];
+    [self.brain push];
+    [self.brain digitPressed:@"2"];
+    [self.brain mult];
+    [self.brain digitPressed:@"1"];
+    [self.brain digitPressed:@"2"];
+    [self.brain sub];
+    float result = [self.brain sum];
+    STAssertEquals(result, expected, @"Espera 70");
+    
+    
+}
+
 -(void)inputNumber:(NSString*)number {
     [self.brain digitPressed:number];
     [self.brain push];

@@ -48,9 +48,12 @@
     return self.buffer;
 }
 
-- (void) push {
-    [self.stack addObject:[self.buffer copy]];
-    self.buffer = @"0";
+- (NSString *) push {
+    if (self.buffer != @"0") {
+        [self.stack addObject:[self.buffer copy]];
+        self.buffer = @"0";
+    }
+    return self.buffer;
 }
 
 - (float) pop {
@@ -60,28 +63,34 @@
 }
 
 - (float) sum {
+    [self push];
     float result = [self pop] + [self pop];
     [self.stack addObject: [NSString stringWithFormat:@"%f", result]];
     return result;
 }
 
 - (float) sub {
+    [self push];
     float result = - ( [self pop] - [self pop] );
     [self.stack addObject: [NSString stringWithFormat:@"%f", result]];
     return result;
 }
 
 - (float) div {
+    [self push];
     float dividendo = [self pop];
     float result = [self pop] / dividendo;
     [self.stack addObject: [NSString stringWithFormat:@"%f", result]];
     return result;
 }
+
 - (float) mult{
+    [self push];
     float result = [self pop] * [self pop];
     [self.stack addObject: [NSString stringWithFormat:@"%f", result]];
     return result;
 }
+
 
 @end
 

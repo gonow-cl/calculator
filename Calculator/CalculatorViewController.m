@@ -23,13 +23,27 @@
 
 - (IBAction)buttonPressed:(UIButton *)sender 
 {
-    //NSString *digit = sender.currentTitle;
-    
-    //NSLog(@"button pressed = %@", digit);
-    
     self.display.text = [self.brain digitPressed:sender.currentTitle];
-    //[self.display.text stringByAppendingFormat:sender.currentTitle];
-    
+}
+
+- (IBAction)enter:(id)sender {
+    self.display.text = [self.brain push];
+}
+
+- (IBAction)sum:(id)sender { 
+    self.display.text = [NSString stringWithFormat:@"%f", [self.brain sum]]; 
+}
+
+- (IBAction)sub:(id)sender { 
+    self.display.text = [NSString stringWithFormat:@"%f", [self.brain sub]]; 
+}
+
+- (IBAction)div:(id)sender { 
+    self.display.text = [NSString stringWithFormat:@"%f", [self.brain div]]; 
+}
+
+- (IBAction)mult:(id)sender { 
+    self.display.text = [NSString stringWithFormat:@"%f", [self.brain mult]]; 
 }
 
 - (CalculatorBrain *) brain
